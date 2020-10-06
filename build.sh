@@ -35,6 +35,20 @@ EOF
 			fi
 			log "End ${SUB_STAGE_DIR}/${i}-packages"
 		fi
+
+		if [ -f "${i}-packages-fm" ]; then
+			log "Begin ${SUB_STAGE_DIR}/${i}-packages-fm"
+			PACKAGES="$(sed -f "${SCRIPT_DIR}/remove-comments.sed" < "${i}-packages-fm")"
+			if [ -n "$PACKAGES" ]; then
+				on_chroot << EOF
+apt-get update --fix-missing
+apt-get install -y $PACKAGES
+EOF
+			fi
+			log "End ${SUB_STAGE_DIR}/${i}-packages"
+		fi
+
+
 		if [ -d "${i}-patches" ]; then
 			log "Begin ${SUB_STAGE_DIR}/${i}-patches"
 			pushd "${STAGE_WORK_DIR}" > /dev/null
