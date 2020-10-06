@@ -16,7 +16,8 @@ https://github.com/RPi-Distro/pi-gen
 # stage anatomy
 	Stage1 & Stage 2 generate Raspbian Lite image
 	Stage 3 - install graphical packages such as xorg,i3,polybar etc. Then, this stage copying config files of polybar and i3 to target fs
-	Stage 4 - update mime database and install lightdm
+	Stage 4 - update mime database and install lightdm, xterm
+	Stage 5 - install qt packages, precompiled Qt(5.15LTS) libs,and tlauncher
 
 # License
 
